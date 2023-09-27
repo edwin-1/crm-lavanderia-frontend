@@ -1,6 +1,12 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 
 function FormCantidadServicio(props) {
+
+    const options = ['Invididual', 'Matrimonial', 'Queen', 'King']
+
+    const onOptionChangeHandler = (event) => {
+        console.log(event.target.value);
+    }
 
     const { servicio, 
         restarServicios, 
@@ -8,11 +14,14 @@ function FormCantidadServicio(props) {
         restarKilo, 
         aumentarKilo, 
         index, 
-        eliminarServicioOrden, 
+        eliminarServicioOrden,
     } = props;
 
     return (
         <Fragment>
+            <pre>
+                {JSON.stringify(servicio, null, 3)}
+            </pre>
             <li>
                 <div className="texto-producto">
                     <p className="nombre">{servicio.nombre}</p>
@@ -38,7 +47,18 @@ function FormCantidadServicio(props) {
                             onClick={() => aumentarKilo(index)}
                         ></i>
 
+                        <select name="tipo" onChange={onOptionChangeHandler}>
+                            <option value="">--Seleccionar--</option>
+                            
+                            {options.map((option, index) => {
+                                return <option key={index}>
+                                    {option}
+                                </option>
+                            })}
+                        </select>
+
                     </div>
+
 
                     <button
                         type="button"
