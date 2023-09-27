@@ -17,26 +17,6 @@ function NuevaOrden(props) {
     const [servicios, guardarServicios] = useState([]);
     const [total, guardarTotal] = useState(0);
 
-    //tipo = state, guadarTipo = funcion para guardar tipo
-    const [tipo, guadarTipo] = useState({
-        tipo: '',
-    });
-
-    //leer los datos del select 
-    const actualizarState = e => {
-        //almacenar lo que le usuario escribe en el state
-        guadarTipo({
-            //obtener una copia del state actual
-            ...tipo,
-            [e.target.name] : e.target.value
-        })
-    }
-
-    //añade en la REST API un nuevo tipo
-    const agregarTipo = e => {
-        e.preventDefault();
-    }
-
     useEffect(() => {
 
         //obtener el cliente
@@ -203,8 +183,6 @@ function NuevaOrden(props) {
                         aumentarKilo={aumentarKilo}
                         restarKilo={restarKilo}
                         eliminarServicioOrden={eliminarServicioOrden}
-                        agregarTipo={agregarTipo}
-                        actualizarState={actualizarState}
                         index={index}
                     />
                 ))}
